@@ -6,6 +6,9 @@ class Server {
     constructor(config) {
         this.config = config;
         this.app = express();
+        this.app.get('/ping', (req, res) => {
+            res.json({'pong': Date.now()});
+        });
     }
     start(callback) {
         https.createServer({
@@ -15,7 +18,7 @@ class Server {
             requestCert: true,
             rejectUnauthorized: true,
         }, this.app).listen(this.config.listen_port, this.config.listen_addr, () => {
-            info(`API server listening at https://${this.config.listen_addr}:${this.config.listen_port}`);
+            info(`Background service listening at https://${this.config.listen_addr}:${this.config.listen_port}`);
         });
     }
 }
