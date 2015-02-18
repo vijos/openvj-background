@@ -6,7 +6,7 @@ GLOBAL.WEB_CONFIG_DIRECTORY = path.join(WEB_ROOT_DIRECTORY, 'app/config');
 // load configure file
 let yaml = require('js-yaml');
 let fs = require('fs');
-let config = yaml.safeLoad(fs.readFileSync(path.join(WEB_CONFIG_DIRECTORY, 'config.yml')));
+GLOBAL.CONFIG = yaml.safeLoad(fs.readFileSync(path.join(WEB_CONFIG_DIRECTORY, 'config.yml')));
 
 // initialize logger
 let winston = require('winston');
@@ -25,4 +25,4 @@ for (let method of ['debug', 'info', 'warn', 'error']) {
 }
 
 // start our API server
-require('./api.js')(config.background).start();
+require('./api.js')().start();
