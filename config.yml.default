@@ -1,0 +1,8 @@
+debug: true
+API:
+    key: ../openvj/app/config/cert-api-server.key
+    cert: ../openvj/app/config/cert-api-server.crt
+    ca: ../openvj/app/config/cert-ca.crt
+    listen_addr: 127.0.0.1
+    listen_port: 13516
+    secret_key: your_secret_key
